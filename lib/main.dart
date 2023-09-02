@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:socketio_ttt/screens/create_room.dart';
+import 'package:socketio_ttt/screens/join_room.dart';
 import 'package:socketio_ttt/screens/menu.dart';
 import 'package:socketio_ttt/utils/colors.dart';
 
@@ -18,9 +20,10 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         Menu.routeName: (context) => const Menu(),
-        
+        CreateRoom.routeName: (context) => const CreateRoom(),
+        JoinRoom.routeName : (context) => const JoinRoom(),
       },
-      home: const Menu(),
+      initialRoute: Menu.routeName,
     );
   }
 }
