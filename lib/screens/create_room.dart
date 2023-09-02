@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socketio_ttt/resources/socketio_methods.dart';
 import 'package:socketio_ttt/responsive/responsive.dart';
 import 'package:socketio_ttt/widgets/custom_button.dart';
 import 'package:socketio_ttt/widgets/custom_text.dart';
@@ -14,6 +15,7 @@ class CreateRoom extends StatefulWidget {
 
 class _CreateRoomState extends State<CreateRoom> {
   final TextEditingController _namecontroller = TextEditingController();
+  final SocketMethods _socketMethods = SocketMethods();
 
   @override
   void dispose() {
@@ -43,7 +45,11 @@ class _CreateRoomState extends State<CreateRoom> {
                 hint: 'Enter your nickname',
               ),
               SizedBox(height: size.height * 0.04),
-              CustomButton(onTap: () {}, text: 'Create'),
+              CustomButton(
+                  onTap: () {
+                    _socketMethods.createRoom(_namecontroller.text);
+                  },
+                  text: 'Create'),
             ],
           ),
         ),
