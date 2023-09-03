@@ -18,6 +18,12 @@ class _CreateRoomState extends State<CreateRoom> {
   final SocketMethods _socketMethods = SocketMethods();
 
   @override
+  void initState() {
+    super.initState();
+    _socketMethods.createRoomSuccessListener(context);
+  }
+
+  @override
   void dispose() {
     super.dispose();
     _namecontroller.dispose();
@@ -46,10 +52,11 @@ class _CreateRoomState extends State<CreateRoom> {
               ),
               SizedBox(height: size.height * 0.04),
               CustomButton(
-                  onTap: () {
-                    _socketMethods.createRoom(_namecontroller.text);
-                  },
-                  text: 'Create'),
+                onTap: () {
+                  _socketMethods.createRoom(_namecontroller.text);
+                },
+                text: 'Create',
+              ),
             ],
           ),
         ),
