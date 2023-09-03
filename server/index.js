@@ -40,7 +40,7 @@ io.on('connection', (socket) => {
             room = await room.save();
             const roomId = room._id.toString();
 
-            // This join the socket with roomId which helps in sending message/reply/change to specific room (where many rooms are going on)
+            // This join the socket with roomId - helps in send message/reply/change to specific room (where many rooms are going on)
             socket.join(roomId); 
 
             // telling client that room is created
