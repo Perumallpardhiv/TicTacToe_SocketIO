@@ -45,12 +45,48 @@ io.on('connection', (socket) => {
 
             // telling client that room is created
             // io.emit('roomCreated', { roomId: roomId }); ==> This will send to all the clients, without checking he present in room or not
-            io.to(roomId).emit('createRoomSuccess', room); //? This will send to only the client who created the room
+            // socket.emit('roomCreated', { roomId: roomId }); ==> This will send to only the present single device not to all clients in the room
+            io.to(roomId).emit('createRoomSuccess', room); //? This will send to only the clients who created/present the room
 
         } catch (error) {
             console.log(error);
         }
     }); //? Output - 'string in nickname variable'
+
+    socket.on('joinRoom', async ({ 'nickname': nickname, 'roomId': roomId }) => {
+        console.log(nickname, roomId);
+        try {
+            if(!roomId.match(/^[0-9a-fA-F]{24}$/)){
+                socket.emit('errorOccured', 'Please enter a valid room ID.');
+                return;
+            }
+            let room = await Room.findById(roomId);
+            if (!room) {
+                socket.emit('errorOccured', 'Given roomId not found.');
+                return;
+            }
+
+            if (room.isJoin) {
+                let player = {
+                    nickname: nickname,
+                    socketId: socket.id,
+                    playerType: 'O',
+                }
+                room.players.push(player);
+                room.isJoin = false;
+                room = await room.save();
+                socket.join(roomId);
+                io.to(roomId).emit('joinRoomSuccess', room);
+                io.to(roomId).emit('updatePlayers', room.players);
+                io.to(roomId).emit('updateRoom', room);
+            } else {
+                socket.emit('errorOccured', 'The game is in progress. Please try again later.');
+                return;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    });
 
     socket.on('disconnect', () => { console.log('SocketIO disconnected') });
 });

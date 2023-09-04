@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:socketio_ttt/provider/room_data_provider.dart';
 import 'package:socketio_ttt/screens/create_room.dart';
 import 'package:socketio_ttt/screens/game_screen.dart';
 import 'package:socketio_ttt/screens/join_room.dart';
@@ -14,18 +16,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: bgcolor,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => RoomDataProvider()),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: bgcolor,
+        ),
+        routes: {
+          Menu.routeName: (context) => const Menu(),
+          CreateRoom.routeName: (context) => const CreateRoom(),
+          JoinRoom.routeName: (context) => const JoinRoom(),
+          GameScreen.routeName: (context) => const GameScreen(),
+        },
+        initialRoute: Menu.routeName,
       ),
-      routes: {
-        Menu.routeName: (context) => const Menu(),
-        CreateRoom.routeName: (context) => const CreateRoom(),
-        JoinRoom.routeName : (context) => const JoinRoom(),
-        GameScreen.routeName : (context) => const GameScreen(),
-      },
-      initialRoute: Menu.routeName,
     );
   }
 }

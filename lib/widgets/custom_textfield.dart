@@ -4,8 +4,13 @@ import 'package:socketio_ttt/utils/colors.dart';
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hint;
-  const CustomTextField(
-      {super.key, required this.controller, required this.hint});
+  final bool isReadOnly;
+  const CustomTextField({
+    super.key,
+    required this.controller,
+    required this.hint,
+    this.isReadOnly = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +22,7 @@ class CustomTextField extends StatelessWidget {
       ),
       child: TextField(
         controller: controller,
+        readOnly: isReadOnly,
         decoration: InputDecoration(
           fillColor: bgcolor,
           filled: true,
