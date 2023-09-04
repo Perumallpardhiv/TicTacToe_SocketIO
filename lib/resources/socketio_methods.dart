@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:socket_io_client/socket_io_client.dart';
 import 'package:socketio_ttt/provider/room_data_provider.dart';
 import 'package:socketio_ttt/resources/socketio_client.dart';
 import 'package:socketio_ttt/screens/game_screen.dart';
@@ -7,6 +8,8 @@ import 'package:socketio_ttt/utils/utils.dart';
 
 class SocketMethods {
   final _socketClient = SocketClient.instance.socket;
+
+  Socket get socketClient => _socketClient!;
 
   void createRoom(String nickname) {
     if (nickname.isNotEmpty) {
@@ -20,6 +23,16 @@ class SocketMethods {
     }
   }
 
+  void tapGrid(int index, String roomId, List<String> displayElements) {
+    if (displayElements[index] == '') {
+      _socketClient!.emit('tap', {
+        'index': index,
+        'roomId': roomId,
+      });
+    }
+  }
+
+  //LISTENERS
   void createRoomSuccessListener(BuildContext context) {
     _socketClient!.on('createRoomSuccess', (room) {
       Provider.of<RoomDataProvider>(context, listen: false)
@@ -55,6 +68,16 @@ class SocketMethods {
     _socketClient!.on('updateRoom', (room) {
       Provider.of<RoomDataProvider>(context, listen: false)
           .updateroomdata(room);
+    });
+  }
+
+  void tappedListener(BuildContext context) {
+    _socketClient!.on('tapped', (data) {
+      Provider.of<RoomDataProvider>(context, listen: false)
+          .updateDisplayElements(data['index'], data['choice']);
+
+      Provider.of<RoomDataProvider>(context, listen: false)
+          .updateroomdata(data['room']);
     });
   }
 }
