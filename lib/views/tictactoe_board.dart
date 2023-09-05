@@ -17,6 +17,7 @@ class _TicTacToeBoardState extends State<TicTacToeBoard> {
   void initState() {
     super.initState();
     _socketMethods.tappedListener(context);
+    _socketMethods.playAgainListener(context);
   }
 
   @override

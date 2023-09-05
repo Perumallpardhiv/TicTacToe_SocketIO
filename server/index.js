@@ -92,17 +92,48 @@ io.on('connection', (socket) => {
         try {
             let room = await Room.findById(roomId);
             let choice = room.turn.playerType;
+            room.displayElements[index] = choice;
             if (room.turnIndex == 0) {
                 room.turn = room.players[1];
-                room.turnIndex = 1;       
+                room.turnIndex = 1;    
             } else {
                 room.turn = room.players[0];
                 room.turnIndex = 0;
             }
             room = await room.save();
             io.to(roomId).emit('tapped', {
-                index, choice, room,
+                index, choice, room, 
             });
+        } catch (error) {
+            console.log(error);
+        }
+    });
+
+    socket.on('winner', async ({ 'winnerSocketId': winnerSocketId, 'roomId': roomId }) => {
+        try {
+            let room = await Room.findById(roomId);
+            let winner = room.players.find((player) => player.socketId == winnerSocketId);
+            winner.points += 1;
+            room = await room.save();
+            if(winner.points >= room.maxRounds){
+                io.to(roomId).emit('gameEnd', winner);
+            } else {
+                io.to(roomId).emit('pointIncrease', winner);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    });
+
+    socket.on('playAgain', async ({ 'roomId': roomId }) => {
+        try {
+            let room = await Room.findById(roomId);
+            room.displayElements = ['', '', '', '', '', '', '', '', ''];
+            room.currentRound += 1;
+            // room.turn = room.players[0];
+            // room.turnIndex = 0;
+            room = await room.save();
+            io.to(roomId).emit('playAgainListener', room);
         } catch (error) {
             console.log(error);
         }

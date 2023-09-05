@@ -44,4 +44,14 @@ class RoomDataProvider extends ChangeNotifier {
     _filledBoxes++;
     notifyListeners();
   }
+
+  void updateAllDisplayElements(List<dynamic> displayElements) {
+    _displayElements = displayElements.cast<String>();
+    notifyListeners();
+  }
+
+  void setFilledBoxestoZero() {
+    _filledBoxes = 0;
+    notifyListeners();
+  }
 }
