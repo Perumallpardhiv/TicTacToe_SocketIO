@@ -146,6 +146,10 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true }).then((
     console.log('MongoDB Connected');
 }).catch(err => console.log(err));
 
+app.get('/', (req, res) => {
+    res.send("Hello World !!")
+});
+
 server.listen(port, '0.0.0.0', () => {
     console.log(`Server running on port http://localhost:${port}`);
 });
