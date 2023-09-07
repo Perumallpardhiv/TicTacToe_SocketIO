@@ -5,7 +5,7 @@ class SocketClient {
   static SocketClient? _instance;
 
   SocketClient._internal() {
-    socket = IO.io('https://server-ethj.onrender.com', <String, dynamic>{
+    socket = IO.io('https://server-ethj.onrender.com/', <String, dynamic>{
       'transports': ['websocket'],
       'autoConnect': false,
     });
