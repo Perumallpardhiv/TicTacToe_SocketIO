@@ -130,8 +130,8 @@ io.on('connection', (socket) => {
             let room = await Room.findById(roomId);
             room.displayElements = ['', '', '', '', '', '', '', '', ''];
             room.currentRound += 1;
-            // room.turn = room.players[0];
-            // room.turnIndex = 0;
+            room.turn = room.players[0];
+            room.turnIndex = 0;
             room = await room.save();
             io.to(roomId).emit('playAgainListener', room);
         } catch (error) {

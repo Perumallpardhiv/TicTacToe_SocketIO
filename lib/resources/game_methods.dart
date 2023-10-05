@@ -71,7 +71,16 @@ class GameMethods {
             roomDataProvider.displayElements[6] &&
         roomDataProvider.displayElements[2] != '') {
       winner = roomDataProvider.displayElements[2];
-    } else if (roomDataProvider.filledBoxes == 9) {
+    } else if (roomDataProvider.filledBoxes == 9 &&
+        roomDataProvider.displayElements[0] != '' &&
+        roomDataProvider.displayElements[1] != '' &&
+        roomDataProvider.displayElements[2] != '' &&
+        roomDataProvider.displayElements[3] != '' &&
+        roomDataProvider.displayElements[4] != '' &&
+        roomDataProvider.displayElements[5] != '' &&
+        roomDataProvider.displayElements[6] != '' &&
+        roomDataProvider.displayElements[7] != '' &&
+        roomDataProvider.displayElements[8] != '') {
       winner = '';
       showDialogBox(context, "Draw");
     }

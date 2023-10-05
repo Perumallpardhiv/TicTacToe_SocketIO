@@ -117,10 +117,11 @@ class SocketMethods {
       } else {
         roomDataProvider.updatePlayer2(winner);
       }
+      roomDataProvider.setFilledBoxestoZero();
     });
   }
 
-  void gameEndListener(BuildContext context){
+  void gameEndListener(BuildContext context) {
     _socketClient!.on('gameEnd', (winner) {
       Navigator.pop(context);
       Navigator.pop(context);

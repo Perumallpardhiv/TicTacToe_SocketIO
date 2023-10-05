@@ -39,7 +39,8 @@ class _GameScreenState extends State<GameScreen> {
                   ScoreBoard(),
                   TicTacToeBoard(),
                   Text(
-                      '${roomDataProvider.roomData['turn']['nickname']}\'s turn'),
+                    '${roomDataProvider.roomData['turn']['nickname']}\'s turn',
+                  ),
                 ],
               ),
       ),
