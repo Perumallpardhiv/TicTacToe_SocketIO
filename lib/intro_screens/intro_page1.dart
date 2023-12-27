@@ -2,6 +2,7 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:socketio_ttt/intro_screens/intro_page2.dart';
+import 'package:socketio_ttt/screens/gameWithComp.dart';
 
 class introPage extends StatefulWidget {
   static String routeName = '/introPage';
@@ -50,24 +51,38 @@ class _introPageState extends State<introPage> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 60, bottom: 20),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(20),
+              GestureDetector(
+                onTap: (() {
+                  Navigator.of(context).push(
+                    PageTransition(
+                      child: GamewithComputer(),
+                      type: PageTransitionType.scale,
+                      childCurrent: widget,
+                      alignment: Alignment.centerLeft,
+                      duration: Duration(milliseconds: 900),
+                      reverseDuration: Duration(milliseconds: 1000),
                     ),
-                    child: Text(
-                      "Play With Computer",
-                      style: TextStyle(
-                        color: Colors.white,
-                        letterSpacing: 3,
-                        fontSize: 20,
-                        fontFamily: "font2",
+                  );
+                }),
+                child: Padding(
+                  padding: EdgeInsets.only(top: 60, bottom: 20),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        "Play With Computer",
+                        style: TextStyle(
+                          color: Colors.white,
+                          letterSpacing: 3,
+                          fontSize: 20,
+                          fontFamily: "font2",
+                        ),
                       ),
                     ),
                   ),

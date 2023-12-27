@@ -20,10 +20,10 @@ class _gameNearbyState extends State<gameNearby> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("WINNER IS : " + letter[0]),
+            title: Text("WINNER IS : ${letter[0]}"),
             actions: [
               MaterialButton(
-                child: Text("Play Again!"),
+                child: const Text("Play Again!"),
                 onPressed: () {
                   setState(() {
                     for (int i = 0; i < 9; i++) {
@@ -51,10 +51,10 @@ class _gameNearbyState extends State<gameNearby> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("WINNER IS : " + letter[3]),
+            title: Text("WINNER IS : ${letter[3]}"),
             actions: [
               MaterialButton(
-                child: Text("Play Again!"),
+                child: const Text("Play Again!"),
                 onPressed: () {
                   setState(() {
                     for (int i = 0; i < 9; i++) {
@@ -82,10 +82,10 @@ class _gameNearbyState extends State<gameNearby> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("WINNER IS : " + letter[6]),
+            title: Text("WINNER IS : ${letter[6]}"),
             actions: [
               MaterialButton(
-                child: Text("Play Again!"),
+                child: const Text("Play Again!"),
                 onPressed: () {
                   setState(() {
                     for (int i = 0; i < 9; i++) {
@@ -113,10 +113,10 @@ class _gameNearbyState extends State<gameNearby> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("WINNER IS : " + letter[0]),
+            title: Text("WINNER IS : ${letter[0]}"),
             actions: [
               MaterialButton(
-                child: Text("Play Again!"),
+                child: const Text("Play Again!"),
                 onPressed: () {
                   setState(() {
                     for (int i = 0; i < 9; i++) {
@@ -144,10 +144,10 @@ class _gameNearbyState extends State<gameNearby> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("WINNER IS : " + letter[1]),
+            title: Text("WINNER IS : ${letter[1]}"),
             actions: [
               MaterialButton(
-                child: Text("Play Again!"),
+                child: const Text("Play Again!"),
                 onPressed: () {
                   setState(() {
                     for (int i = 0; i < 9; i++) {
@@ -175,10 +175,10 @@ class _gameNearbyState extends State<gameNearby> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("WINNER IS : " + letter[2]),
+            title: Text("WINNER IS : ${letter[2]}"),
             actions: [
               MaterialButton(
-                child: Text("Play Again!"),
+                child: const Text("Play Again!"),
                 onPressed: () {
                   setState(() {
                     for (int i = 0; i < 9; i++) {
@@ -206,10 +206,10 @@ class _gameNearbyState extends State<gameNearby> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("WINNER IS : " + letter[0]),
+            title: Text("WINNER IS : ${letter[0]}"),
             actions: [
               MaterialButton(
-                child: Text("Play Again!"),
+                child: const Text("Play Again!"),
                 onPressed: () {
                   setState(() {
                     for (int i = 0; i < 9; i++) {
@@ -237,10 +237,10 @@ class _gameNearbyState extends State<gameNearby> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("WINNER IS : " + letter[2]),
+            title: Text("WINNER IS : ${letter[2]}"),
             actions: [
               MaterialButton(
-                child: Text("Play Again!"),
+                child: const Text("Play Again!"),
                 onPressed: () {
                   setState(() {
                     for (int i = 0; i < 9; i++) {
@@ -274,10 +274,10 @@ class _gameNearbyState extends State<gameNearby> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("DRAW"),
+            title: const Text("DRAW"),
             actions: [
               MaterialButton(
-                child: Text("Play Again!"),
+                child: const Text("Play Again!"),
                 onPressed: () {
                   setState(() {
                     for (int i = 0; i < 9; i++) {
@@ -308,8 +308,8 @@ class _gameNearbyState extends State<gameNearby> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
+                    const Padding(
+                      padding: EdgeInsets.all(20.0),
                       child: Text(
                         "SCORECARD",
                         style: TextStyle(
@@ -318,7 +318,7 @@ class _gameNearbyState extends State<gameNearby> {
                             fontFamily: "font4"),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 17,
                     ),
                     Row(
@@ -327,7 +327,7 @@ class _gameNearbyState extends State<gameNearby> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            const Text(
                               "Player X",
                               style: TextStyle(
                                   color: Colors.white,
@@ -336,7 +336,7 @@ class _gameNearbyState extends State<gameNearby> {
                             ),
                             Text(
                               Xscore.toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
                                   fontFamily: "font5"),
@@ -346,7 +346,7 @@ class _gameNearbyState extends State<gameNearby> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            const Text(
                               "Player O",
                               style: TextStyle(
                                   color: Colors.white,
@@ -355,7 +355,7 @@ class _gameNearbyState extends State<gameNearby> {
                             ),
                             Text(
                               Oscore.toString(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
                                   fontFamily: "font5"),
@@ -372,7 +372,7 @@ class _gameNearbyState extends State<gameNearby> {
               flex: 3,
               child: GridView.builder(
                 itemCount: 9,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3),
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
@@ -397,7 +397,7 @@ class _gameNearbyState extends State<gameNearby> {
                       child: Center(
                         child: Text(
                           letter[index],
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 35,
                             fontWeight: FontWeight.w700,
@@ -416,7 +416,7 @@ class _gameNearbyState extends State<gameNearby> {
                   padding: const EdgeInsets.all(20.0),
                   child: Text(
                     player1 ? "Player X's turn" : "Player O's turn",
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white, fontSize: 27, fontFamily: "font1"),
                   ),
                 ),
