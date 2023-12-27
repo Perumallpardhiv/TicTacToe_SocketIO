@@ -33,16 +33,37 @@ class _GameScreenState extends State<GameScreen> {
       body: Center(
         child: roomDataProvider.roomData['isJoin']
             ? const WaitingLobby()
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  ScoreBoard(),
-                  TicTacToeBoard(),
-                  Text(
-                    '${roomDataProvider.roomData['turn']['nickname']}\'s turn',
-                  ),
-                ],
-              ),
+            : SingleChildScrollView(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Text(
+                        "SCORECARD",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 28,
+                          fontFamily: "font4",
+                        ),
+                      ),
+                    ),
+                    const ScoreBoard(),
+                    const TicTacToeBoard(),
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Text(
+                        '${roomDataProvider.roomData['turn']['nickname']}\'s turn',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 27,
+                          fontFamily: "font1",
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+            ),
       ),
     );
   }

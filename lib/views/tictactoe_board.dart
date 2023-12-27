@@ -29,6 +29,7 @@ class _TicTacToeBoardState extends State<TicTacToeBoard> {
         maxWidth: 450,
       ),
       child: GridView.builder(
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: 9,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,

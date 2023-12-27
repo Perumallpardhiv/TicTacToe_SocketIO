@@ -12,7 +12,7 @@ class ScoreBoard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
-          padding: EdgeInsets.all(30),
+          padding: EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -21,17 +21,21 @@ class ScoreBoard extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
+                  fontFamily: "font5",
                 ),
               ),
               Text(
                 roomDataProvider.player1.points.toInt().toString(),
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: "font5",
+                ),
               ),
             ],
           ),
         ),
         Padding(
-          padding: EdgeInsets.all(30),
+          padding: EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -39,12 +43,16 @@ class ScoreBoard extends StatelessWidget {
                 roomDataProvider.player2.nickname,
                 style: TextStyle(
                   fontSize: 20,
+                  fontFamily: "font5",
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 roomDataProvider.player2.points.toInt().toString(),
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: "font5",
+                ),
               ),
             ],
           ),
